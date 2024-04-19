@@ -12,6 +12,10 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+input[type=number] {
+  font-weight: bold;
+}
+
 .bg-dark{
   background-color: #18191B !important;
 }
