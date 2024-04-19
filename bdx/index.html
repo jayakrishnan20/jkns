@@ -171,7 +171,7 @@
               <p class="nav-link fw-bold text-white m-0">Investment Value BDX</p>
             </span>
             <span class="nav-item">
-              <p class="nav-link fw-bold text-white m-0">100000</p>
+              <p class="nav-link fw-bold text-white m-0 investment_bdx_lbl">0</p>
             </span>
           </div>
           <div class="d-flex justify-content-between">
@@ -179,7 +179,7 @@
               <p class="nav-link fw-bold text-white m-0">Instant Earning BDX:</p>
             </span>
             <span class="nav-item">
-              <p class="nav-link fw-bold text-white m-0">10000</p>
+              <p class="nav-link fw-bold text-white m-0 instant_earning_lbl">0</p>
             </span>
           </div>
           <div class="d-flex justify-content-between">
@@ -187,7 +187,7 @@
               <p class="nav-link fw-bold text-white m-0">Bonus Coins BDX:</p>
             </span>
             <span class="nav-item">
-              <p class="nav-link fw-bold text-white m-0">5000</p>
+              <p class="nav-link fw-bold text-white m-0 bonus_lbl">0</p>
             </span>
           </div>
           <div class="d-flex justify-content-between">
@@ -195,7 +195,7 @@
               <p class="nav-link fw-bold text-white m-0">Total Amount BDX:</p>
             </span>
             <span class="nav-item">
-              <p class="nav-link fw-bold text-white m-0">115000</p>
+              <p class="nav-link fw-bold text-white m-0 total_lbl">0</p>
             </span>
           </div>
           <div class="d-flex justify-content-between ">
@@ -203,7 +203,7 @@
               <p class="nav-link fw-bold text-danger m-0">Monthly ROI BDX:</p>
             </span>
             <span class="nav-item">
-              <p class="nav-link fw-bold text-danger m-0">2300</p>
+              <p class="nav-link fw-bold text-danger m-0 roi_lbl">0</p>
             </span>
           </div>
           <div class="d-flex justify-content-between">
@@ -211,7 +211,7 @@
               <p class="nav-link fw-bold text-white m-0">Divitent Per Month BDX:</p>
             </span>
             <span class="nav-item">
-              <p class="nav-link fw-bold text-white m-0">2300x60 = 138000</p>
+              <p class="nav-link fw-bold text-white m-0 years_lbl">0</p>
             </span>
           </div>
 
@@ -222,7 +222,7 @@
               <p class="nav-link fw-bold text-white m-0">Investment Value INR</p>
             </span>
             <span class="nav-item text-end w-50">
-              <p class="nav-link fw-bold text-white m-0">400000</p>
+              <p class="nav-link fw-bold text-white m-0 value_inr_lbl">0</p>
             </span>
           </div>
           <div class="d-flex justify-content-between">
@@ -230,7 +230,7 @@
               <p class="nav-link fw-bold text-white m-0">Instant Earning INR:</p>
             </span>
             <span class="nav-item text-end w-50">
-              <p class="nav-link fw-bold text-white m-0">40000</p>
+              <p class="nav-link fw-bold text-white m-0 instant_inr_lbl">0</p>
             </span>
           </div>
           <div class="d-flex justify-content-between">
@@ -238,7 +238,7 @@
               <p class="nav-link fw-bold text-white m-0">Bonus Coins INR:</p>
             </span>
             <span class="nav-item">
-              <p class="nav-link fw-bold text-white m-0">20000</p>
+              <p class="nav-link fw-bold text-white m-0 bonus_inr_lbl">0</p>
             </span>
           </div>
           <div class="d-flex justify-content-between">
@@ -246,7 +246,7 @@
               <p class="nav-link fw-bold text-white m-0">Total Amount INR:</p>
             </span>
             <span class="nav-item">
-              <p class="nav-link fw-bold text-white m-0">460000</p>
+              <p class="nav-link fw-bold text-white m-0 total_inr_lbl">0</p>
             </span>
           </div>
           <div class="d-flex justify-content-between ">
@@ -254,7 +254,7 @@
               <p class="nav-link fw-bold text-danger m-0">Monthly ROI INR:</p>
             </span>
             <span class="nav-item">
-              <p class="nav-link fw-bold text-danger m-0">9200</p>
+              <p class="nav-link fw-bold text-danger m-0 roi_inr_lbl">0</p>
             </span>
           </div>
           <div class="d-flex justify-content-between">
@@ -262,7 +262,7 @@
               <p class="nav-link fw-bold text-white m-0">Divitent Per Month INR:</p>
             </span>
             <span class="nav-item">
-              <p class="nav-link fw-bold text-white m-0">9200x60 = 552000</p>
+              <p class="nav-link fw-bold text-white m-0 years_inr_lbl">0</p>
             </span>
           </div>
 
@@ -420,7 +420,7 @@
           <p class="nav-link fw-bold text-white m-0">Amount in INR</p>
         </span>
       </div>
-    <hr class="bg-danger" style="height: 5px;">
+      <hr class="bg-danger" style="height: 5px;">
       <div class="d-flex px-3 mt-3 justify-content-between">
         <span class="nav-item text-center w-25">
           <p class="nav-link fw-bold text-white m-0 card w-50 text-bg-danger">$</p>
@@ -494,5 +494,53 @@
 </main>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 
-<script src="assets/js/offcanvas-navbar.js"></script></body>
+<script src="assets/js/offcanvas-navbar.js"></script>
+<script src="assets/js/jquery-2.1.3.min.js"></script>
+
+<script>
+  $(".bdx_cal").change(function(){
+    calculator();
+  });
+
+  function calculator(){
+    var bdx_price = ($('#bdx_price').val().length == 0) ? 0 : parseFloat($('#bdx_price').val())
+    var projected_bdx_price = ($('#projected_bdx_price').val().length == 0) ? 0 : parseFloat($('#projected_bdx_price').val())
+    var investment_bdx = ($('#investment_bdx').val().length == 0) ? 0 : parseFloat($('#investment_bdx').val())
+    var value_inr = ($('#value_inr').val().length == 0) ? 0 : parseFloat($('#value_inr').val())
+    var instant_percentage = ($('#instant_percentage').val().length == 0) ? 0 : parseFloat($('#instant_percentage').val())
+    var divitent = ($('#divitent').val().length == 0) ? 0 : parseFloat($('#divitent').val())
+    var bonus = ($('#bonus').val().length == 0) ? 0 : parseFloat($('#bonus').val())
+
+    var instant_earning_lbl = investment_bdx * instant_percentage / 100
+
+    var total_lbl = investment_bdx + instant_earning_lbl + bonus
+    var roi_lbl = total_lbl * divitent / 100
+    var years_lbl = roi_lbl * 60
+    value_inr = investment_bdx * bdx_price
+    var instant_inr_lbl = value_inr * instant_percentage / 100
+    var bonus_inr_lbl = bonus * bdx_price
+    var total_inr_lbl = value_inr + instant_inr_lbl + bonus_inr_lbl
+    var roi_inr_lbl = total_inr_lbl * divitent / 100
+    var years_inr_lbl = roi_inr_lbl * 60
+
+    $('.investment_bdx_lbl').html(investment_bdx);
+    $('.instant_earning_lbl').html(instant_earning_lbl);
+    $('.bonus_lbl').html(bonus);
+    $('.total_lbl').html(total_lbl);
+    $('.roi_lbl').html(roi_lbl);
+    $('.years_lbl').html(roi_lbl + 'x60 = ' + years_lbl);
+
+
+    $('#value_inr').val(value_inr)
+    $('.value_inr_lbl').html(value_inr)
+    $('.instant_inr_lbl').html(instant_inr_lbl)
+    $('.bonus_inr_lbl').html(bonus_inr_lbl)
+    $('.total_inr_lbl').html(total_inr_lbl)
+    $('.roi_inr_lbl').html(roi_inr_lbl)
+    $('.years_inr_lbl').html(roi_inr_lbl + 'x60 = ' + years_inr_lbl);
+
+  }
+</script>
+
+</body>
 </html>
