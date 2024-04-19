@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Beldex Investment Plan Calculator</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/offcanvas-navbar.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+    </style>
+    
+  </head>
+  <body class="">
+    
+    
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Main navigation">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="logo.png" class="img" width="50"></a>
+    <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <p class="nav-link fw-bold text-white m-0">BDX Price</p>
+        </li>
+        <li class="nav-item">
+          <input class="form-control me-2 bdx_cal" type="number" id="bdx_price" min="0" placeholder="BDX Price">
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <p class="nav-link fw-bold text-white m-0 fs-4">Beldex Investment Plan Calculator</p>
+        </li>
+      </ul>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <p class="nav-link fw-bold text-white m-0">Projected BDX Price</p>
+        </li>
+        <li class="nav-item">
+          <input class="form-control me-2 bdx_cal" type="number" min="0" id="projected_bdx_price" placeholder="Projected BDX Price">
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<main class="">
+  
+  
+  <div class="my-3 p-3 mt-3 bg-dark  shadow-sm d-lg-flex justify-content-between">
+    
+    <span class="nav-item">
+      <p class="nav-link fw-bold text-white m-0">Investment Value BDX</p>
+    </span>
+    <span class="nav-item">
+      <input class="form-control me-2 bdx_cal" type="number" min="0" id="investment_bdx" placeholder="Investment Value BDX">
+    </span>
+    <span class="nav-item">
+      <p class="nav-link fw-bold text-white m-0">Value in INR</p>
+    </span>
+    <span class="nav-item">
+      <input class="form-control me-2 bdx_cal" type="number" min="0" id="value_inr" placeholder="Value in INR">
+    </span>
+    <span class="nav-item">
+      <p class="nav-link fw-bold text-white m-0">Instant Earning %</p>
+    </span>
+    <span class="nav-item">
+      <input class="form-control me-2 bdx_cal" style="width: 100px;" type="number" min="0" id="instant_percentage" placeholder="Instant Earning %">
+    </span>
+    <span class="nav-item">
+      <p class="nav-link fw-bold text-white m-0">Divitent %</p>
+    </span>
+    <span class="nav-item">
+      <input class="form-control me-2 bdx_cal" style="width: 100px;" type="number" min="0" id="divitent" placeholder="Divitent %">
+    </span>
+    <span class="nav-item">
+      <p class="nav-link fw-bold text-white m-0">Bonus</p>
+    </span>
+    <span class="nav-item">
+      <input class="form-control me-2 bdx_cal" style="width: 100px;" type="number" min="0" id="bonus" placeholder="Bonus">
+    </span>
+
+  </div>
+
+  <div class="row gap-1 mt-3">
+    <div class="col-lg-7 px-5 py-3 rounded card-body bg-dark">
+      <div class="row mt-3">
+        <div class="col-lg-6">
+          <div class="d-flex justify-content-between">
+            <span class="nav-item text-end w-50">
+              <p class="nav-link fw-bold text-white m-0">Investment Value BDX</p>
+            </span>
+            <span class="nav-item">
+              <p class="nav-link fw-bold text-white m-0">100000</p>
+            </span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span class="nav-item text-end w-50">
+              <p class="nav-link fw-bold text-white m-0">Instant Earning BDX:</p>
+            </span>
+            <span class="nav-item">
+              <p class="nav-link fw-bold text-white m-0">10000</p>
+            </span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span class="nav-item text-end w-50">
+              <p class="nav-link fw-bold text-white m-0">Bonus Coins BDX:</p>
+            </span>
+            <span class="nav-item">
+              <p class="nav-link fw-bold text-white m-0">5000</p>
+            </span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span class="nav-item text-end w-50">
+              <p class="nav-link fw-bold text-white m-0">Total Amount BDX:</p>
+            </span>
+            <span class="nav-item">
+              <p class="nav-link fw-bold text-white m-0">115000</p>
+            </span>
+          </div>
+          <div class="d-flex justify-content-between ">
+            <span class="nav-item text-end w-50">
+              <p class="nav-link fw-bold text-danger m-0">Monthly ROI BDX:</p>
+            </span>
+            <span class="nav-item">
+              <p class="nav-link fw-bold text-danger m-0">2300</p>
+            </span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span class="nav-item text-end w-50">
+              <p class="nav-link fw-bold text-white m-0">Divitent Per Month BDX:</p>
+            </span>
+            <span class="nav-item">
+              <p class="nav-link fw-bold text-white m-0">2300x60 = 138000</p>
+            </span>
+          </div>
+
+        </div>
+        <div class="col-lg-6">
+          <div class="d-flex justify-content-between">
+            <span class="nav-item text-end w-50">
+              <p class="nav-link fw-bold text-white m-0">Investment Value INR</p>
+            </span>
+            <span class="nav-item text-end w-50">
+              <p class="nav-link fw-bold text-white m-0">400000</p>
+            </span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span class="nav-item text-end w-50">
+              <p class="nav-link fw-bold text-white m-0">Instant Earning INR:</p>
+            </span>
+            <span class="nav-item text-end w-50">
+              <p class="nav-link fw-bold text-white m-0">40000</p>
+            </span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span class="nav-item text-end w-50">
+              <p class="nav-link fw-bold text-white m-0">Bonus Coins INR:</p>
+            </span>
+            <span class="nav-item">
+              <p class="nav-link fw-bold text-white m-0">20000</p>
+            </span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span class="nav-item text-end w-50">
+              <p class="nav-link fw-bold text-white m-0">Total Amount INR:</p>
+            </span>
+            <span class="nav-item">
+              <p class="nav-link fw-bold text-white m-0">460000</p>
+            </span>
+          </div>
+          <div class="d-flex justify-content-between ">
+            <span class="nav-item text-end w-50">
+              <p class="nav-link fw-bold text-danger m-0">Monthly ROI INR:</p>
+            </span>
+            <span class="nav-item">
+              <p class="nav-link fw-bold text-danger m-0">9200</p>
+            </span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span class="nav-item text-end w-50">
+              <p class="nav-link fw-bold text-white m-0">Divitent Per Month INR:</p>
+            </span>
+            <span class="nav-item">
+              <p class="nav-link fw-bold text-white m-0">9200x60 = 552000</p>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 rounded card-body bg-dark">
+      <div class="credit-card m-auto">
+        <header>
+          <span class="logo">
+            <img src="assets/images/logo.png" alt="" />
+            <h5>XXXXX-XXXX</h5>
+          </span>
+          <img src="assets/images/chip.png" alt="" class="chip" />
+        </header>
+  
+        <div class="card-details mt-3">
+          <div class="name-number">
+            <h4 class="text-white">Total Asset Value INR</h4>
+            <h5 class="number fw-bold text-danger">101200</h5>
+            <h5 class="name">Total BDX</h5>
+          </div>
+          <div class="valid-date">
+            <h6></h6>
+            <h5>25300</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row gap-1 mt-3">
+    <div class="col-lg-2 py-3 rounded card-body bg-dark">
+      <div class="ps-5">
+        <div class="d-flex justify-content-between">
+          <span class="nav-item mb-3">
+            <p class="nav-link fw-bold text-white m-0 fs-5">Minimum Return of Investment</p>
+          </span>
+        </div>
+        <div class="circle">INR 1012000</div>
+      </div>
+      <div class="bg-light p-3 mt-3 text-center">
+        <p class="nav-link fw-bold m-0">253%</p>
+      </div>
+    </div>
+    <div class="col-lg-3">       
+        
+      <div class="col-12 py-3 rounded card-body bg-dark">
+
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">Staking BDX</p>
+          </span>
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">100000</p>
+          </span>
+        </div>
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">Instant Earning BDX</p>
+          </span>
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">15000</p>
+          </span>
+        </div>
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">Monthly ROI BDX</p>
+          </span>
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">2300</p>
+          </span>
+        </div>
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">5 Years Profit BDX</p>
+          </span>
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">138000</p>
+          </span>
+        </div>
+        <div class="d-flex mt-3 px-3 justify-content-between">
+          <span class="nav-item text-center">
+            <p class="nav-link fw-bold text-white m-0">Available Balance after 5 Years BDX <span class="text-danger">253000</span></p>
+          </span>
+        </div>
+
+      </div>
+      
+      <div class="col-12 py-3 mt-3 rounded card-body bg-dark">
+
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">Staking INR</p>
+          </span>
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">400000</p>
+          </span>
+        </div>
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">Instant Earning INR</p>
+          </span>
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">40000</p>
+          </span>
+        </div>
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">Monthly ROI INR</p>
+          </span>
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">9200</p>
+          </span>
+        </div>
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">5 Years Profit BDX</p>
+          </span>
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">552000</p>
+          </span>
+        </div>
+        <div class="d-flex mt-3 px-3 justify-content-between">
+          <span class="nav-item text-center">
+            <p class="nav-link fw-bold text-white m-0">Available Balance after 5 Years BDX <span class="text-danger">1012000</span></p>
+          </span>
+        </div>
+
+      </div>
+
+
+    </div>
+    <div class="col-lg-2 py-3 rounded card-body bg-dark">
+      <div class="ps-5">
+        <div class="d-flex justify-content-between">
+          <span class="nav-item mb-3">
+            <p class="nav-link fw-bold text-white m-0 fs-5">Projected Return of <br>Investment</p>
+          </span>
+        </div>
+        <div class="circle">INR 1265000</div>
+      </div>
+      <div class="bg-light p-3 mt-3 text-center">
+        <p class="nav-link fw-bold m-0">316%</p>
+      </div>
+    </div>
+
+    <div class="col-lg-3 rounded card-body bg-dark">
+        
+      <div class="d-flex px-3 mt-3 justify-content-between">
+        <span class="nav-item text-center w-50">
+          <p class="nav-link fw-bold text-white m-0">Future Projected</p>
+        </span>
+        <span class="nav-item text-center w-50">
+          <p class="nav-link fw-bold text-white m-0">Amount in INR</p>
+        </span>
+      </div>
+    <hr class="bg-danger" style="height: 5px;">
+      <div class="d-flex px-3 mt-3 justify-content-between">
+        <span class="nav-item text-center w-25">
+          <p class="nav-link fw-bold text-white m-0 card w-50 text-bg-danger">$</p>
+        </span>
+        <span class="nav-item w-50">
+          <p class="nav-link fw-bold text-white m-0">IF BDX = 4</p>
+        </span>
+        <span class="nav-item text-center w-50">
+          <p class="nav-link fw-bold text-white m-0">₹ 1012000</p>
+        </span>
+      </div>
+      <div class="d-flex px-3 mt-3 justify-content-between">
+        <span class="nav-item text-center w-25">
+          <p class="nav-link fw-bold text-white m-0 card w-50 text-bg-danger">$</p>
+        </span>
+        <span class="nav-item w-50">
+          <p class="nav-link fw-bold text-white m-0">IF BDX = 5</p>
+        </span>
+        <span class="nav-item text-center w-50">
+          <p class="nav-link fw-bold text-white m-0">₹ 1265000</p>
+        </span>
+      </div>
+      <div class="d-flex px-3 mt-3 justify-content-between">
+        <span class="nav-item text-center w-25">
+          <p class="nav-link fw-bold text-white m-0 card w-50 text-bg-danger">$</p>
+        </span>
+        <span class="nav-item w-50">
+          <p class="nav-link fw-bold text-white m-0">IF BDX = 6</p>
+        </span>
+        <span class="nav-item text-center w-50">
+          <p class="nav-link fw-bold text-white m-0">₹ 1518000</p>
+        </span>
+      </div>
+      <div class="d-flex px-3 mt-3 justify-content-between">
+        <span class="nav-item text-center w-25">
+          <p class="nav-link fw-bold text-white m-0 card w-50 text-bg-danger">$</p>
+        </span>
+        <span class="nav-item w-50">
+          <p class="nav-link fw-bold text-white m-0">IF BDX = 7</p>
+        </span>
+        <span class="nav-item text-center w-50">
+          <p class="nav-link fw-bold text-white m-0">₹ 1771000</p>
+        </span>
+      </div>
+      <div class="d-flex px-3 mt-3 justify-content-between">
+        <span class="nav-item text-center w-25">
+          <p class="nav-link fw-bold text-white m-0 card w-50 text-bg-danger">$</p>
+        </span>
+        <span class="nav-item w-50">
+          <p class="nav-link fw-bold text-white m-0">IF BDX = 8</p>
+        </span>
+        <span class="nav-item text-center w-50">
+          <p class="nav-link fw-bold text-white m-0">₹ 2024000</p>
+        </span>
+      </div>
+      <div class="d-flex px-3 mt-3 justify-content-between">
+        <span class="nav-item text-center w-25">
+          <p class="nav-link fw-bold text-white m-0 card w-50 text-bg-danger">$</p>
+        </span>
+        <span class="nav-item w-50">
+          <p class="nav-link fw-bold text-white m-0">IF BDX = 9</p>
+        </span>
+        <span class="nav-item text-center w-50">
+          <p class="nav-link fw-bold text-white m-0">₹ 2277000</p>
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="assets/js/offcanvas-navbar.js"></script></body>
+</html>
