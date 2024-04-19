@@ -15,6 +15,9 @@ input[type=number] {
 input[type=number] {
   font-weight: bold;
 }
+hr{
+  background: white;height: 2px;opacity: 1;margin: 10px;
+}
 
 .bg-dark{
   background-color: #18191B !important;
@@ -74,14 +77,14 @@ h5.name {
 }
 
 .circle {
-  width: 200px;
-  height: 200px;
-  line-height: 180px;
+  width: 100px;
+  height: 100px;
+  line-height: 80px;
   border-radius: 50%;
   font-size: 25px;
   font-weight: bold;
   color: #fff;
   text-align: center;
   background: #000;
-  border: solid 10px;
+  border: solid 8px;
 }

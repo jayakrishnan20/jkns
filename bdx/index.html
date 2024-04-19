@@ -93,17 +93,17 @@
     
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Main navigation">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="logo.png" class="img" width="50"></a>
+    <a class="navbar-brand" href="https://www.nccbeldex.com/"><img src="logo.png" class="img" width="50"></a>
     <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <p class="nav-link fw-bold text-white m-0">BDX Price</p>
+          <p class="nav-link fw-bold text-white m-0">BDX Price INR</p>
         </li>
         <li class="nav-item">
-          <input class="form-control me-2 bdx_cal" type="number" style="width: 100px;" id="bdx_price" min="0" placeholder="BDX Price">
+          <input class="form-control me-2 bdx_cal" type="number" style="width: 100px;" id="bdx_price" min="0" placeholder="BDX Price INR">
         </li>
       </ul>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -113,10 +113,10 @@
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
-          <p class="nav-link fw-bold text-white m-0">Projected BDX Price</p>
+          <p class="nav-link fw-bold text-white m-0">Projected BDX Price INR</p>
         </li>
         <li class="nav-item">
-          <input class="form-control me-2 bdx_cal" type="number" min="0" style="width: 100px;" id="projected_bdx_price" placeholder="Projected BDX Price">
+          <input class="form-control me-2 bdx_cal" type="number" min="0" style="width: 100px;" id="projected_bdx_price" placeholder="Projected BDX Price INR">
         </li>
       </ul>
     </div>
@@ -148,16 +148,16 @@
       <input class="form-control me-2 bdx_cal" style="width: 100px;" type="number" min="0" id="instant_percentage" placeholder="Instant Earning %">
     </span>
     <span class="nav-item">
-      <p class="nav-link fw-bold text-white m-0">Divitent %</p>
+      <p class="nav-link fw-bold text-white m-0">Divident %</p>
     </span>
     <span class="nav-item">
-      <input class="form-control me-2 bdx_cal" style="width: 100px;" type="number" min="0" id="divitent" placeholder="Divitent %">
+      <input class="form-control me-2 bdx_cal" style="width: 100px;" type="number" min="0" id="divitent" placeholder="Divident %">
     </span>
     <span class="nav-item">
-      <p class="nav-link fw-bold text-white m-0">Bonus</p>
+      <p class="nav-link fw-bold text-white m-0">Aarman offer</p>
     </span>
     <span class="nav-item">
-      <input class="form-control me-2 bdx_cal" style="width: 100px;" type="number" min="0" id="bonus" placeholder="Bonus">
+      <input class="form-control me-2 bdx_cal" style="width: 100px;" type="number" value="0" min="0" id="bonus" placeholder="Bonus">
     </span>
 
   </div>
@@ -184,20 +184,22 @@
           </div>
           <div class="d-flex justify-content-between">
             <span class="nav-item text-end w-50">
-              <p class="nav-link fw-bold text-white m-0">Bonus Coins BDX:</p>
+              <p class="nav-link fw-bold text-white m-0">Aarman offer Coins BDX:</p>
             </span>
             <span class="nav-item">
               <p class="nav-link fw-bold text-white m-0 bonus_lbl num-word">0</p>
             </span>
           </div>
+          <hr>
           <div class="d-flex justify-content-between">
             <span class="nav-item text-end w-50">
               <p class="nav-link fw-bold text-white m-0">Total Staking BDX:</p>
             </span>
             <span class="nav-item">
-              <p class="nav-link fw-bold text-white m-0 total_lbl num-word">0</p>
+              <p class="nav-link fw-bold text-white fs-4 m-0 total_lbl num-word">0</p>
             </span>
           </div>
+          <hr class="bg-white">
           <div class="d-flex justify-content-between ">
             <span class="nav-item text-end w-50">
               <p class="nav-link fw-bold text-warning m-0">Monthly ROI BDX:</p>
@@ -208,7 +210,7 @@
           </div>
           <div class="d-flex justify-content-between">
             <span class="nav-item text-end w-50">
-              <p class="nav-link fw-bold text-white m-0">Divitent Per Month BDX:</p>
+              <p class="nav-link fw-bold text-white m-0">Divident Per Month BDX:</p>
             </span>
             <span class="nav-item">
               <p class="nav-link fw-bold text-white m-0 years_lbl">0</p>
@@ -235,20 +237,22 @@
           </div>
           <div class="d-flex justify-content-between">
             <span class="nav-item text-end w-50">
-              <p class="nav-link fw-bold text-white m-0">Bonus Coins INR:</p>
+              <p class="nav-link fw-bold text-white m-0">Aarman offer Coins INR:</p>
             </span>
             <span class="nav-item">
               <p class="nav-link fw-bold text-white m-0 bonus_inr_lbl num-word">0</p>
             </span>
           </div>
+          <hr>
           <div class="d-flex justify-content-between">
             <span class="nav-item text-end w-50">
               <p class="nav-link fw-bold text-white m-0">Total Amount INR:</p>
             </span>
             <span class="nav-item">
-              <p class="nav-link fw-bold text-white m-0 total_inr_lbl num-word">0</p>
+              <p class="nav-link fw-bold text-white m-0 fs-4 total_inr_lbl num-word">0</p>
             </span>
           </div>
+          <hr>
           <div class="d-flex justify-content-between ">
             <span class="nav-item text-end w-50">
               <p class="nav-link fw-bold text-warning m-0">Monthly ROI INR:</p>
@@ -259,7 +263,7 @@
           </div>
           <div class="d-flex justify-content-between">
             <span class="nav-item text-end w-50">
-              <p class="nav-link fw-bold text-white m-0">Divitent Per Month INR:</p>
+              <p class="nav-link fw-bold text-white m-0">Divident Per Month INR:</p>
             </span>
             <span class="nav-item">
               <p class="nav-link fw-bold text-white m-0 years_inr_lbl">0</p>
@@ -269,7 +273,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-4 rounded card-body bg-dark">
+    <div class="col-lg-4 rounded card-body m-auto">
       <div class="credit-card m-auto">
         <header>
           <span class="logo">
@@ -283,11 +287,11 @@
           <div class="name-number">
             <h4 class="text-white">Total Asset Value INR</h4>
             <h5 class="number fw-bold text-warning total_asset">0</h5>
-            <h5 class="name">Total BDX</h5>
+            <h5 class="name"><img src="assets/images/coin.png" class="me-2" width="30">Total BDX</h5>
           </div>
           <div class="valid-date">
             <h6></h6>
-            <h5 class="total_bdx num-word">0</h5>
+            <h5 class="total_bdx fw-bold num-word">0</h5>
           </div>
         </div>
       </div>
@@ -302,11 +306,12 @@
             <p class="nav-link fw-bold text-center text-white m-0 fs-5">Minimum Return of <br>Investment</p>
           </span>
         </div>
-        <div class="circle m-auto total_asset">0</div>
+        <img src="assets/images/graph.png" style="width: 100%;">
       </div>
-      <div class="bg-light p-3 mt-3 text-center">
-        <p class="nav-link fw-bold m-0 total_asset_pec">0</p>
+      <div class="bg-light p-3 mb-3 text-center">
+        <p class="nav-link fw-bold fs-3 m-0 total_asset">0</p>
       </div>
+      <div class="circle m-auto total_asset_pec">0</div>
     </div>
     <div class="col-lg-3">       
         
@@ -403,11 +408,12 @@
             <p class="nav-link fw-bold text-center text-white m-0 fs-5">Projected Return of <br>Investment</p>
           </span>
         </div>
-        <div class="circle m-auto projected_total_asset">0</div>
+        <img src="assets/images/graph.png" style="width: 100%;">
       </div>
-      <div class="bg-light p-3 mt-3 text-center">
-        <p class="nav-link fw-bold m-0 projected_total_asset_pec">0</p>
+      <div class="bg-light p-3 mb-3 fs-3 text-center">
+        <p class="nav-link fw-bold m-0 text-warning projected_total_asset">0</p>
       </div>
+      <div class="circle m-auto projected_total_asset_pec">0</div>
     </div>
 
     <div class="col-lg-3">
@@ -416,7 +422,7 @@
       <div class="col-12 py-3 rounded card-body bg-dark">
         <div class="d-flex px-3 justify-content-between">
           <span class="nav-item text-center">
-            <p class="nav-link fw-bold text-warning m-0 fs-5"><u>5 Month Maturity</u></p>
+            <p class="nav-link fw-bold text-warning m-0 fs-5"><u>1 to 5 Month Maturity</u></p>
           </span>
         </div>
         <div class="d-flex px-3 justify-content-between">
@@ -430,6 +436,7 @@
             <p class="nav-link fw-bold text-white m-0 ">INR</p>
           </span>
         </div>
+        <hr>
         <div class="d-flex px-3 justify-content-between">
           <span class="nav-item text-end w-50">
             <p class="nav-link fw-bold text-white m-0">Initial Investment</p>
@@ -452,6 +459,7 @@
             <p class="nav-link fw-bold text-white m-0 month_5_inr_lbl num-word">0</p>
           </span>
         </div>
+        <hr>
         <div class="d-flex px-3 justify-content-between">
           <span class="nav-item text-end w-50">
             <p class="nav-link fw-bold text-white m-0">Total</p>
@@ -482,7 +490,7 @@
       <div class="col-12 py-3 mt-3 rounded card-body bg-dark">
         <div class="d-flex px-3 justify-content-between">
           <span class="nav-item text-center">
-            <p class="nav-link fw-bold text-warning m-0 fs-5"><u>10 Month Maturity</u></p>
+            <p class="nav-link fw-bold text-warning m-0 fs-5"><u>6 to 10 Month Maturity</u></p>
           </span>
         </div>
         <div class="d-flex px-3 justify-content-between">
@@ -496,6 +504,7 @@
             <p class="nav-link fw-bold text-white m-0 ">INR</p>
           </span>
         </div>
+        <hr>
         <div class="d-flex px-3 justify-content-between">
           <span class="nav-item text-end w-50">
             <p class="nav-link fw-bold text-white m-0">Initial Investment</p>
@@ -518,6 +527,7 @@
             <p class="nav-link fw-bold text-white m-0 month_10_inr_lbl num-word">0</p>
           </span>
         </div>
+        <hr>
         <div class="d-flex px-3 justify-content-between">
           <span class="nav-item text-end w-50">
             <p class="nav-link fw-bold text-white m-0">Total</p>
@@ -559,7 +569,7 @@
   $(".bdx_cal").change(function(){
     calculator();
   });
-  $(".bdx_cal").keypress(function(){
+  $(".bdx_cal").keyup(function(){
     calculator();
   });
 
@@ -615,10 +625,10 @@
     $('.bonus_lbl').html(bonus);
     $('.total_lbl').html(total_lbl);
     $('.roi_lbl').html(roi_lbl);
-    $('.years_lbl').html(roi_lbl.toLocaleString() + 'x60 = ' + years_lbl.toLocaleString());
+    $('.years_lbl').html(roi_lbl.toLocaleString('en-IN') + 'x60 = ' + years_lbl.toLocaleString('en-IN'));
     $('.total_lbl_all').html(bonus + instant_earning_lbl);
     $('.years_lbl_amt').html(years_lbl);
-    $('.ava_years_lbl_amt').html((total_lbl + years_lbl).toLocaleString());
+    $('.ava_years_lbl_amt').html((total_lbl + years_lbl).toLocaleString('en-IN'));
 
 
     $('#value_inr').val(value_inr)
@@ -627,13 +637,13 @@
     $('.bonus_inr_lbl').html(bonus_inr_lbl)
     $('.total_inr_lbl').html(total_inr_lbl)
     $('.roi_inr_lbl').html(roi_inr_lbl)
-    $('.years_inr_lbl').html(roi_inr_lbl.toLocaleString() + 'x60 = ' + years_inr_lbl.toLocaleString());
+    $('.years_inr_lbl').html(roi_inr_lbl.toLocaleString('en-IN') + 'x60 = ' + years_inr_lbl.toLocaleString('en-IN'));
     $('.total_inr_lbl_all').html(bonus_inr_lbl + instant_inr_lbl);
     $('.years_inr_lbl_amt').html(years_inr_lbl);
-    $('.ava_years_inr_lbl_amt').html((total_inr_lbl + years_inr_lbl).toLocaleString());
+    $('.ava_years_inr_lbl_amt').html((total_inr_lbl + years_inr_lbl).toLocaleString('en-IN'));
 
     $('.total_bdx').html(total_bdx)
-    $('.total_asset').html('₹ '+ total_asset.toLocaleString())
+    $('.total_asset').html('₹ '+ total_asset.toLocaleString('en-IN'))
 
     var total_asset_pec = Math.round((total_asset / value_inr )*100)
     $('.total_asset_pec').html((total_asset_pec)?total_asset_pec + ' %':0 + ' %')
@@ -641,7 +651,7 @@
     
     var projected_total_asset = ((investment_bdx * projected_bdx_price) + ((investment_bdx * instant_percentage / 100) * projected_bdx_price) + (bonus * projected_bdx_price))
     projected_total_asset = projected_total_asset + ((projected_total_asset * divitent / 100) * 60)
-    $('.projected_total_asset').html('₹ '+ projected_total_asset.toLocaleString())
+    $('.projected_total_asset').html('₹ '+ projected_total_asset.toLocaleString('en-IN'))
     
     var projected_total_asset_pec = Math.round((projected_total_asset / value_inr )*100)
     $('.projected_total_asset_pec').html((projected_total_asset_pec)?projected_total_asset_pec + ' %':0  + ' %')
@@ -651,11 +661,10 @@
   function numWithCommas(){
     $(".num-word" ).each(function( index ) {
       console.log($(this).html())
-      $(this).html(parseFloat($(this).html()).toLocaleString())
+      $(this).html(parseFloat($(this).html()).toLocaleString('en-IN'))
     });
   }
-  var n = 0;
-console.log(n.toLocaleString()); 
+
 </script>
 
 </body>
