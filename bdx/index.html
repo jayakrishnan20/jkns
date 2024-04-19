@@ -103,7 +103,7 @@
           <p class="nav-link fw-bold text-white m-0">BDX Price</p>
         </li>
         <li class="nav-item">
-          <input class="form-control me-2 bdx_cal" type="number" id="bdx_price" min="0" placeholder="BDX Price">
+          <input class="form-control me-2 bdx_cal" type="number" style="width: 100px;" id="bdx_price" min="0" placeholder="BDX Price">
         </li>
       </ul>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -116,7 +116,7 @@
           <p class="nav-link fw-bold text-white m-0">Projected BDX Price</p>
         </li>
         <li class="nav-item">
-          <input class="form-control me-2 bdx_cal" type="number" min="0" id="projected_bdx_price" placeholder="Projected BDX Price">
+          <input class="form-control me-2 bdx_cal" type="number" min="0" style="width: 100px;" id="projected_bdx_price" placeholder="Projected BDX Price">
         </li>
       </ul>
     </div>
@@ -192,7 +192,7 @@
           </div>
           <div class="d-flex justify-content-between">
             <span class="nav-item text-end w-50">
-              <p class="nav-link fw-bold text-white m-0">Total Amount BDX:</p>
+              <p class="nav-link fw-bold text-white m-0">Total Staking BDX:</p>
             </span>
             <span class="nav-item">
               <p class="nav-link fw-bold text-white m-0 total_lbl">0</p>
@@ -200,10 +200,10 @@
           </div>
           <div class="d-flex justify-content-between ">
             <span class="nav-item text-end w-50">
-              <p class="nav-link fw-bold text-danger m-0">Monthly ROI BDX:</p>
+              <p class="nav-link fw-bold text-warning m-0">Monthly ROI BDX:</p>
             </span>
             <span class="nav-item">
-              <p class="nav-link fw-bold text-danger m-0 roi_lbl">0</p>
+              <p class="nav-link fw-bold text-warning m-0 roi_lbl">0</p>
             </span>
           </div>
           <div class="d-flex justify-content-between">
@@ -251,10 +251,10 @@
           </div>
           <div class="d-flex justify-content-between ">
             <span class="nav-item text-end w-50">
-              <p class="nav-link fw-bold text-danger m-0">Monthly ROI INR:</p>
+              <p class="nav-link fw-bold text-warning m-0">Monthly ROI INR:</p>
             </span>
             <span class="nav-item">
-              <p class="nav-link fw-bold text-danger m-0 roi_inr_lbl">0</p>
+              <p class="nav-link fw-bold text-warning m-0 roi_inr_lbl">0</p>
             </span>
           </div>
           <div class="d-flex justify-content-between">
@@ -282,12 +282,12 @@
         <div class="card-details mt-3">
           <div class="name-number">
             <h4 class="text-white">Total Asset Value INR</h4>
-            <h5 class="number fw-bold text-danger">101200</h5>
+            <h5 class="number fw-bold text-warning total_asset">0</h5>
             <h5 class="name">Total BDX</h5>
           </div>
           <div class="valid-date">
             <h6></h6>
-            <h5>25300</h5>
+            <h5 class="total_bdx">0</h5>
           </div>
         </div>
       </div>
@@ -296,16 +296,16 @@
   
   <div class="row gap-1 mt-3">
     <div class="col-lg-2 py-3 rounded card-body bg-dark">
-      <div class="ps-5">
-        <div class="d-flex justify-content-between">
+      <div class="">
+        <div class="mb-3">
           <span class="nav-item mb-3">
-            <p class="nav-link fw-bold text-white m-0 fs-5">Minimum Return of Investment</p>
+            <p class="nav-link fw-bold text-center text-white m-0 fs-5">Minimum Return of <br>Investment</p>
           </span>
         </div>
-        <div class="circle">INR 1012000</div>
+        <div class="circle m-auto total_asset">0</div>
       </div>
       <div class="bg-light p-3 mt-3 text-center">
-        <p class="nav-link fw-bold m-0">253%</p>
+        <p class="nav-link fw-bold m-0 total_asset_pec">0</p>
       </div>
     </div>
     <div class="col-lg-3">       
@@ -317,7 +317,7 @@
             <p class="nav-link fw-bold text-white m-0">Staking BDX</p>
           </span>
           <span class="nav-item text-end w-50">
-            <p class="nav-link fw-bold text-white m-0">100000</p>
+            <p class="nav-link fw-bold text-white m-0 total_lbl">0</p>
           </span>
         </div>
         <div class="d-flex px-3 justify-content-between">
@@ -325,7 +325,7 @@
             <p class="nav-link fw-bold text-white m-0">Instant Earning BDX</p>
           </span>
           <span class="nav-item text-end w-50">
-            <p class="nav-link fw-bold text-white m-0">15000</p>
+            <p class="nav-link fw-bold text-white m-0 total_lbl_all">0</p>
           </span>
         </div>
         <div class="d-flex px-3 justify-content-between">
@@ -333,7 +333,7 @@
             <p class="nav-link fw-bold text-white m-0">Monthly ROI BDX</p>
           </span>
           <span class="nav-item text-end w-50">
-            <p class="nav-link fw-bold text-white m-0">2300</p>
+            <p class="nav-link fw-bold text-white m-0 roi_lbl">0</p>
           </span>
         </div>
         <div class="d-flex px-3 justify-content-between">
@@ -341,12 +341,12 @@
             <p class="nav-link fw-bold text-white m-0">5 Years Profit BDX</p>
           </span>
           <span class="nav-item text-end w-50">
-            <p class="nav-link fw-bold text-white m-0">138000</p>
+            <p class="nav-link fw-bold text-white m-0 years_lbl_amt">0</p>
           </span>
         </div>
         <div class="d-flex mt-3 px-3 justify-content-between">
           <span class="nav-item text-center">
-            <p class="nav-link fw-bold text-white m-0">Available Balance after 5 Years BDX <span class="text-danger">253000</span></p>
+            <p class="nav-link fw-bold text-white m-0">Available Balance after 5 Years BDX <span class="text-warning ava_years_lbl_amt">0</span></p>
           </span>
         </div>
 
@@ -359,7 +359,7 @@
             <p class="nav-link fw-bold text-white m-0">Staking INR</p>
           </span>
           <span class="nav-item text-end w-50">
-            <p class="nav-link fw-bold text-white m-0">400000</p>
+            <p class="nav-link fw-bold text-white m-0 value_inr_lbl">0</p>
           </span>
         </div>
         <div class="d-flex px-3 justify-content-between">
@@ -367,7 +367,7 @@
             <p class="nav-link fw-bold text-white m-0">Instant Earning INR</p>
           </span>
           <span class="nav-item text-end w-50">
-            <p class="nav-link fw-bold text-white m-0">40000</p>
+            <p class="nav-link fw-bold text-white m-0 total_inr_lbl_all">0</p>
           </span>
         </div>
         <div class="d-flex px-3 justify-content-between">
@@ -375,20 +375,20 @@
             <p class="nav-link fw-bold text-white m-0">Monthly ROI INR</p>
           </span>
           <span class="nav-item text-end w-50">
-            <p class="nav-link fw-bold text-white m-0">9200</p>
+            <p class="nav-link fw-bold text-white m-0 roi_inr_lbl">0</p>
           </span>
         </div>
         <div class="d-flex px-3 justify-content-between">
           <span class="nav-item text-end w-50">
-            <p class="nav-link fw-bold text-white m-0">5 Years Profit BDX</p>
+            <p class="nav-link fw-bold text-white m-0">5 Years Profit INR</p>
           </span>
           <span class="nav-item text-end w-50">
-            <p class="nav-link fw-bold text-white m-0">552000</p>
+            <p class="nav-link fw-bold text-white m-0 years_inr_lbl_amt">0</p>
           </span>
         </div>
         <div class="d-flex mt-3 px-3 justify-content-between">
           <span class="nav-item text-center">
-            <p class="nav-link fw-bold text-white m-0">Available Balance after 5 Years BDX <span class="text-danger">1012000</span></p>
+            <p class="nav-link fw-bold text-white m-0">Available Balance after 5 Years INR <span class="text-warning ava_years_inr_lbl_amt">0</span></p>
           </span>
         </div>
 
@@ -397,96 +397,154 @@
 
     </div>
     <div class="col-lg-2 py-3 rounded card-body bg-dark">
-      <div class="ps-5">
-        <div class="d-flex justify-content-between">
+      <div class="">
+        <div class="mb-3">
           <span class="nav-item mb-3">
-            <p class="nav-link fw-bold text-white m-0 fs-5">Projected Return of <br>Investment</p>
+            <p class="nav-link fw-bold text-center text-white m-0 fs-5">Projected Return of <br>Investment</p>
           </span>
         </div>
-        <div class="circle">INR 1265000</div>
+        <div class="circle m-auto projected_total_asset">0</div>
       </div>
       <div class="bg-light p-3 mt-3 text-center">
-        <p class="nav-link fw-bold m-0">316%</p>
+        <p class="nav-link fw-bold m-0 projected_total_asset_pec">0</p>
       </div>
     </div>
 
-    <div class="col-lg-3 rounded card-body bg-dark">
+    <div class="col-lg-3">
+
+      
+      <div class="col-12 py-3 rounded card-body bg-dark">
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-center">
+            <p class="nav-link fw-bold text-warning m-0 fs-5"><u>5 Month Maturity</u></p>
+          </span>
+        </div>
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0"></p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 ">BDX</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 ">INR</p>
+          </span>
+        </div>
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">Initial Investment</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 total_lbl">0</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 total_inr_lbl">0</p>
+          </span>
+        </div>
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">5 Month Maturity</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 month_5_lbl">0</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 month_5_inr_lbl">0</p>
+          </span>
+        </div>
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">Total</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 month_5_tot_lbl">0</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 month_5_tot_inr_lbl">0</p>
+          </span>
+        </div>
+        <div class="d-flex px-3 justify-content-between bg-warning py-2 mt-3">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">From 6th Month ROI</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 month_6_lbl">0</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 month_6_inr_lbl">0</p>
+          </span>
+        </div>
         
-      <div class="d-flex px-3 mt-3 justify-content-between">
-        <span class="nav-item text-center w-50">
-          <p class="nav-link fw-bold text-white m-0">Future Projected</p>
-        </span>
-        <span class="nav-item text-center w-50">
-          <p class="nav-link fw-bold text-white m-0">Amount in INR</p>
-        </span>
+        
+
       </div>
-      <hr class="bg-danger" style="height: 5px;">
-      <div class="d-flex px-3 mt-3 justify-content-between">
-        <span class="nav-item text-center w-25">
-          <p class="nav-link fw-bold text-white m-0 card w-50 text-bg-danger">$</p>
-        </span>
-        <span class="nav-item w-50">
-          <p class="nav-link fw-bold text-white m-0">IF BDX = 4</p>
-        </span>
-        <span class="nav-item text-center w-50">
-          <p class="nav-link fw-bold text-white m-0">₹ 1012000</p>
-        </span>
+      
+      <div class="col-12 py-3 mt-3 rounded card-body bg-dark">
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-center">
+            <p class="nav-link fw-bold text-warning m-0 fs-5"><u>10 Month Maturity</u></p>
+          </span>
+        </div>
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0"></p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 ">BDX</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 ">INR</p>
+          </span>
+        </div>
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">Initial Investment</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 total_lbl">0</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 total_inr_lbl">0</p>
+          </span>
+        </div>
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">10 Month Maturity</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 month_10_lbl">0</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 month_10_inr_lbl">0</p>
+          </span>
+        </div>
+        <div class="d-flex px-3 justify-content-between">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">Total</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 month_10_tot_lbl">0</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 month_10_tot_inr_lbl">0</p>
+          </span>
+        </div>
+        <div class="d-flex px-3 justify-content-between bg-warning py-2 mt-3">
+          <span class="nav-item text-end w-50">
+            <p class="nav-link fw-bold text-white m-0">From 11th Month ROI</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 month_11_lbl">0</p>
+          </span>
+          <span class="nav-item text-center w-25">
+            <p class="nav-link fw-bold text-white m-0 month_11_inr_lbl">0</p>
+          </span>
+        </div>
+        
+        
+
       </div>
-      <div class="d-flex px-3 mt-3 justify-content-between">
-        <span class="nav-item text-center w-25">
-          <p class="nav-link fw-bold text-white m-0 card w-50 text-bg-danger">$</p>
-        </span>
-        <span class="nav-item w-50">
-          <p class="nav-link fw-bold text-white m-0">IF BDX = 5</p>
-        </span>
-        <span class="nav-item text-center w-50">
-          <p class="nav-link fw-bold text-white m-0">₹ 1265000</p>
-        </span>
-      </div>
-      <div class="d-flex px-3 mt-3 justify-content-between">
-        <span class="nav-item text-center w-25">
-          <p class="nav-link fw-bold text-white m-0 card w-50 text-bg-danger">$</p>
-        </span>
-        <span class="nav-item w-50">
-          <p class="nav-link fw-bold text-white m-0">IF BDX = 6</p>
-        </span>
-        <span class="nav-item text-center w-50">
-          <p class="nav-link fw-bold text-white m-0">₹ 1518000</p>
-        </span>
-      </div>
-      <div class="d-flex px-3 mt-3 justify-content-between">
-        <span class="nav-item text-center w-25">
-          <p class="nav-link fw-bold text-white m-0 card w-50 text-bg-danger">$</p>
-        </span>
-        <span class="nav-item w-50">
-          <p class="nav-link fw-bold text-white m-0">IF BDX = 7</p>
-        </span>
-        <span class="nav-item text-center w-50">
-          <p class="nav-link fw-bold text-white m-0">₹ 1771000</p>
-        </span>
-      </div>
-      <div class="d-flex px-3 mt-3 justify-content-between">
-        <span class="nav-item text-center w-25">
-          <p class="nav-link fw-bold text-white m-0 card w-50 text-bg-danger">$</p>
-        </span>
-        <span class="nav-item w-50">
-          <p class="nav-link fw-bold text-white m-0">IF BDX = 8</p>
-        </span>
-        <span class="nav-item text-center w-50">
-          <p class="nav-link fw-bold text-white m-0">₹ 2024000</p>
-        </span>
-      </div>
-      <div class="d-flex px-3 mt-3 justify-content-between">
-        <span class="nav-item text-center w-25">
-          <p class="nav-link fw-bold text-white m-0 card w-50 text-bg-danger">$</p>
-        </span>
-        <span class="nav-item w-50">
-          <p class="nav-link fw-bold text-white m-0">IF BDX = 9</p>
-        </span>
-        <span class="nav-item text-center w-50">
-          <p class="nav-link fw-bold text-white m-0">₹ 2277000</p>
-        </span>
-      </div>
+        
 
     </div>
   </div>
@@ -499,6 +557,9 @@
 
 <script>
   $(".bdx_cal").change(function(){
+    calculator();
+  });
+  $(".bdx_cal").keypress(function(){
     calculator();
   });
 
@@ -516,12 +577,35 @@
     var total_lbl = investment_bdx + instant_earning_lbl + bonus
     var roi_lbl = total_lbl * divitent / 100
     var years_lbl = roi_lbl * 60
+    var total_bdx = total_lbl + years_lbl
+
+    
     value_inr = investment_bdx * bdx_price
     var instant_inr_lbl = value_inr * instant_percentage / 100
     var bonus_inr_lbl = bonus * bdx_price
     var total_inr_lbl = value_inr + instant_inr_lbl + bonus_inr_lbl
     var roi_inr_lbl = total_inr_lbl * divitent / 100
     var years_inr_lbl = roi_inr_lbl * 60
+    var total_asset = total_inr_lbl + years_inr_lbl
+    
+    var month_5_lbl = roi_lbl * 5
+    var month_5_inr_lbl = roi_inr_lbl * 5
+    $('.month_5_lbl').html(month_5_lbl);
+    $('.month_5_inr_lbl').html(month_5_inr_lbl);
+    $('.month_5_tot_lbl').html(total_lbl + month_5_lbl);
+    $('.month_5_tot_inr_lbl').html(total_inr_lbl + month_5_inr_lbl);
+    $('.month_6_lbl').html(((total_lbl + month_5_lbl)*divitent) / 100);
+    $('.month_6_inr_lbl').html(((total_inr_lbl + month_5_inr_lbl)*divitent) / 100);
+
+    
+    var month_10_lbl = roi_lbl * 10
+    var month_10_inr_lbl = roi_inr_lbl * 10
+    $('.month_10_lbl').html(month_10_lbl);
+    $('.month_10_inr_lbl').html(month_10_inr_lbl);
+    $('.month_10_tot_lbl').html(total_lbl + month_10_lbl);
+    $('.month_10_tot_inr_lbl').html(total_inr_lbl + month_10_inr_lbl);
+    $('.month_11_lbl').html(((total_lbl + month_10_lbl)*divitent) / 100);
+    $('.month_11_inr_lbl').html(((total_inr_lbl + month_10_inr_lbl)*divitent) / 100);
 
     $('.investment_bdx_lbl').html(investment_bdx);
     $('.instant_earning_lbl').html(instant_earning_lbl);
@@ -529,6 +613,9 @@
     $('.total_lbl').html(total_lbl);
     $('.roi_lbl').html(roi_lbl);
     $('.years_lbl').html(roi_lbl + 'x60 = ' + years_lbl);
+    $('.total_lbl_all').html(bonus + instant_earning_lbl);
+    $('.years_lbl_amt').html(years_lbl);
+    $('.ava_years_lbl_amt').html(total_lbl + years_lbl);
 
 
     $('#value_inr').val(value_inr)
@@ -538,6 +625,51 @@
     $('.total_inr_lbl').html(total_inr_lbl)
     $('.roi_inr_lbl').html(roi_inr_lbl)
     $('.years_inr_lbl').html(roi_inr_lbl + 'x60 = ' + years_inr_lbl);
+    $('.total_inr_lbl_all').html(bonus_inr_lbl + instant_inr_lbl);
+    $('.years_inr_lbl_amt').html(years_inr_lbl);
+    $('.ava_years_inr_lbl_amt').html(total_inr_lbl + years_inr_lbl);
+
+    $('.total_bdx').html(total_bdx)
+    $('.total_asset').html('₹ '+ total_asset)
+
+    var total_asset_pec = Math.round((total_asset / value_inr )*100)
+    $('.total_asset_pec').html((total_asset_pec)?total_asset_pec + ' %':0 + ' %')
+
+    
+    var projected_total_asset = ((investment_bdx * projected_bdx_price) + ((investment_bdx * instant_percentage / 100) * projected_bdx_price) + (bonus * projected_bdx_price))
+    projected_total_asset = projected_total_asset + ((projected_total_asset * divitent / 100) * 60)
+    $('.projected_total_asset').html('₹ '+ projected_total_asset)
+    
+    var projected_total_asset_pec = Math.round((projected_total_asset / value_inr )*100)
+    $('.projected_total_asset_pec').html((projected_total_asset_pec)?projected_total_asset_pec + ' %':0  + ' %')
+    
+    //var bdx4_amt = ((investment_bdx * 4) + ((investment_bdx * instant_percentage / 100) * 4) + (bonus * 4))
+    //bdx4_amt = bdx4_amt + ((bdx4_amt * divitent / 100) * 60)
+    //$('.bdx4_amt').html('₹ '+ bdx4_amt)
+    //
+    //var bdx5_amt = ((investment_bdx * 5) + ((investment_bdx * instant_percentage / 100) * 5) + (bonus * 5))
+    //bdx5_amt = bdx5_amt + ((bdx5_amt * divitent / 100) * 60)
+    //$('.bdx5_amt').html('₹ '+ bdx5_amt)
+    //
+    //var bdx6_amt = ((investment_bdx * 6) + ((investment_bdx * instant_percentage / 100) * 6) + (bonus * 6))
+    //bdx6_amt = bdx6_amt + ((bdx6_amt * divitent / 100) * 60)
+    //$('.bdx6_amt').html('₹ '+ bdx6_amt)
+    //
+    //var bdx7_amt = ((investment_bdx * 7) + ((investment_bdx * instant_percentage / 100) * 7) + (bonus * 7))
+    //bdx7_amt = bdx7_amt + ((bdx7_amt * divitent / 100) * 60)
+    //$('.bdx7_amt').html('₹ '+ bdx7_amt)
+    //
+    //var bdx8_amt = ((investment_bdx * 8) + ((investment_bdx * instant_percentage / 100) * 8) + (bonus * 8))
+    //bdx8_amt = bdx8_amt + ((bdx8_amt * divitent / 100) * 60)
+    //$('.bdx8_amt').html('₹ '+ bdx8_amt)
+    //
+    //var bdx9_amt = ((investment_bdx * 9) + ((investment_bdx * instant_percentage / 100) * 9) + (bonus * 9))
+    //bdx9_amt = bdx9_amt + ((bdx9_amt * divitent / 100) * 60)
+    //$('.bdx9_amt').html('₹ '+ bdx9_amt)
+    //
+    //var bdx10_amt = ((investment_bdx * 10) + ((investment_bdx * instant_percentage / 100) * 10) + (bonus * 10))
+    //bdx10_amt = bdx10_amt + ((bdx10_amt * divitent / 100) * 60)
+    //$('.bdx10_amt').html('₹ '+ bdx10_amt)
 
   }
 </script>

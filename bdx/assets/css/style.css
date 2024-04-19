@@ -1,6 +1,14 @@
 /* Import Google Font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
-
+.bg-dark{
+  background-color: #18191B !important;
+}
+.bg-warning{
+  background-color: #F2B321 !important;
+}
+.text-warning{
+  color: #F2B321 !important;
+}
 .credit-card {
   position: relative;
   background-image: url("../images/bg.png");
