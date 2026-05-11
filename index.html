@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JK National Solution – Web & Mobile Development</title>
+  <link rel="shortcut icon" href="img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ───────── TOKENS ───────── */
+    [data-theme="light"] {
+      --bg:          #FFFFFF;
+      --bg-2:        #F7F7F8;
+      --bg-3:        #EFEFEF;
+      --card:        #FFFFFF;
+      --card-hover:  #F9F9F9;
+      --border:      #E5E5E5;
+      --border-2:    #D0D0D0;
+      --text:        #0D0D0D;
+      --text-2:      #404040;
+      --text-3:      #888888;
+      --red:         #D90016;
+      --red-2:       #FF001A;
+      --red-bg:      rgba(217,0,22,0.06);
+      --red-border:  rgba(217,0,22,0.18);
+      --nav-bg:      rgba(255,255,255,0.9);
+      --shadow-sm:   0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md:   0 4px 16px rgba(0,0,0,0.07), 0 2px 6px rgba(0,0,0,0.04);
+      --shadow-lg:   0 12px 40px rgba(0,0,0,0.1);
+      --shadow-xl:   0 24px 60px rgba(0,0,0,0.12);
+      --grid-dot:    #E0E0E0;
+    }
+    [data-theme="dark"] {
+      --bg:          #0A0A0A;
+      --bg-2:        #111111;
+      --bg-3:        #1A1A1A;
+      --card:        #141414;
+      --card-hover:  #1C1C1C;
+      --border:      rgba(255,255,255,0.08);
+      --border-2:    rgba(255,255,255,0.14);
+      --text:        #F2F2F2;
+      --text-2:      #BBBBBB;
+      --text-3:      #666666;
+      --red:         #E8001D;
+      --red-2:       #FF1A35;
+      --red-bg:      rgba(232,0,29,0.1);
+      --red-border:  rgba(232,0,29,0.22);
+      --nav-bg:      rgba(10,10,10,0.88);
+      --shadow-sm:   0 1px 3px rgba(0,0,0,0.4);
+      --shadow-md:   0 4px 16px rgba(0,0,0,0.5);
+      --shadow-lg:   0 12px 40px rgba(0,0,0,0.6);
+      --shadow-xl:   0 24px 60px rgba(0,0,0,0.7);
+      --grid-dot:    rgba(255,255,255,0.04);
+    }
+
+    /* ───────── RESET ───────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      transition: background .3s, color .3s;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ───────── LAYOUT ───────── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 100px 0; }
+
+    /* ───────── TYPOGRAPHY ───────── */
+    .label {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .72rem; font-weight: 600; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--red);
+      background: var(--red-bg); border: 1px solid var(--red-border);
+      padding: 4px 12px; border-radius: 100px;
+    }
+    .label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--red); display: block; }
+
+    h1, h2, h3 { font-family: 'Syne', sans-serif; line-height: 1.1; }
+    .h1 { font-size: clamp(2.6rem, 6vw, 5rem); font-weight: 800; letter-spacing: -.03em; }
+    .h2 { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 800; letter-spacing: -.025em; }
+    .h3 { font-size: 1.1rem; font-weight: 700; }
+    .lead { font-size: 1.05rem; color: var(--text-2); line-height: 1.75; font-weight: 300; }
+    .muted { color: var(--text-3); font-size: .85rem; }
+    .red { color: var(--red); }
+
+    /* ───────── BUTTONS ───────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Inter', sans-serif; font-weight: 600;
+      font-size: .875rem; padding: 12px 24px; border-radius: 8px;
+      border: none; cursor: pointer; transition: all .22s ease;
+      letter-spacing: .01em;
+    }
+    .btn-red {
+      background: var(--red); color: #fff;
+      box-shadow: 0 2px 10px rgba(217,0,22,.25);
+    }
+    .btn-red:hover { background: var(--red-2); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(217,0,22,.35); }
+    .btn-ghost {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border-2);
+    }
+    .btn-ghost:hover { border-color: var(--red); color: var(--red); background: var(--red-bg); }
+    .btn-wa {
+      background: #22C55E; color: #fff;
+      box-shadow: 0 2px 12px rgba(34,197,94,.3);
+      font-size: 1rem; padding: 15px 32px; border-radius: 50px;
+    }
+    .btn-wa:hover { background: #16A34A; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(34,197,94,.4); }
+    .btn-wa-outline {
+      background: transparent; color: #22C55E;
+      border: 1.5px solid #22C55E;
+      border-radius: 50px; padding: 11px 24px;
+    }
+    .btn-wa-outline:hover { background: rgba(34,197,94,.08); }
+
+    /* ───────── NAV ───────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: background .3s, border-color .3s;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-mark {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-mark svg { width: 20px; height: 20px; }
+    .logo-text { font-family: 'Syne', sans-serif; font-weight: 800; font-size: .95rem; letter-spacing: -.01em; }
+    .logo-sub { font-size: .65rem; color: var(--text-3); letter-spacing: .12em; text-transform: uppercase; margin-top: -1px; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      font-size: .85rem; font-weight: 500; color: var(--text-2);
+      padding: 6px 12px; border-radius: 6px;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover { color: var(--text); background: var(--bg-3); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+
+    /* THEME TOGGLE */
+    .theme-btn {
+      width: 40px; height: 22px; border-radius: 100px;
+      background: var(--bg-3); border: 1px solid var(--border-2);
+      cursor: pointer; position: relative; transition: background .3s;
+      flex-shrink: 0;
+    }
+    .theme-btn:hover { border-color: var(--red); }
+    .theme-thumb {
+      position: absolute; top: 2px; left: 2px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--red); transition: transform .25s cubic-bezier(.4,0,.2,1);
+    }
+    [data-theme="dark"] .theme-thumb { transform: translateX(18px); }
+    .theme-icon { position: absolute; top: 3px; font-size: 11px; pointer-events: none; }
+    .theme-icon.sun { left: 3px; }
+    .theme-icon.moon { right: 3px; }
+
+    /* Mobile ham */
+    .ham { display: none; flex-direction: column; gap: 4px; cursor: pointer; padding: 6px; border-radius: 6px; transition: background .2s; }
+    .ham:hover { background: var(--bg-3); }
+    .ham span { width: 20px; height: 2px; background: var(--text); border-radius: 2px; transition: all .25s; display: block; }
+    .mob-nav {
+      display: none; flex-direction: column; gap: 2px;
+      padding: 12px 24px 20px; background: var(--nav-bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .mob-nav a { font-size: .9rem; font-weight: 500; color: var(--text-2); padding: 10px 8px; border-radius: 6px; }
+    .mob-nav a:hover { color: var(--red); }
+    .mob-nav.open { display: flex; }
+
+    /* ───────── DOT GRID BG ───────── */
+    .dot-bg {
+      background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* ───────── HERO ───────── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding-top: 64px; position: relative; overflow: hidden;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 100px; padding: 6px 16px 6px 8px;
+      box-shadow: var(--shadow-sm); margin-bottom: 28px;
+    }
+    .hero-badge-dot {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--red); display: flex; align-items: center; justify-content: center;
+    }
+    .hero-badge-dot svg { width: 11px; height: 11px; }
+    .hero-badge span { font-size: .8rem; font-weight: 500; color: var(--text-2); }
+    .hero-title { margin-bottom: 20px; color: var(--text); }
+    .hero-title em { font-style: normal; color: var(--red); }
+    .hero-desc { max-width: 520px; margin-bottom: 36px; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 56px; }
+    .hero-stats {
+      display: flex; flex-wrap: wrap; gap: 0;
+      border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden; width: fit-content;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-stat {
+      padding: 18px 28px; background: var(--card);
+      border-right: 1px solid var(--border);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--red); line-height: 1; }
+    .hero-stat-lbl { font-size: .75rem; color: var(--text-3); margin-top: 4px; font-weight: 500; }
+
+    /* Hero visual */
+    .hero-visual {
+      width: 100%;
+    }
+    .hero-card-stack { position: relative; padding: 20px; }
+    .hcard {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+      box-shadow: var(--shadow-md);
+      transition: background .3s, border-color .3s;
+    }
+    .hcard-main { position: relative; z-index: 2; }
+    .hcard-back1 {
+      position: absolute; top: -12px; left: 12px; right: 12px; bottom: -12px;
+      background: var(--bg-2); border: 1px solid var(--border); border-radius: 14px; z-index: 1;
+    }
+    .hcard-back2 {
+      position: absolute; top: -22px; left: 22px; right: 22px; bottom: -22px;
+      background: var(--bg-3); border: 1px solid var(--border); border-radius: 14px; z-index: 0;
+    }
+    .hcard-top { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .hcard-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--red-bg); border: 1px solid var(--red-border);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .hcard-icon svg { width: 18px; height: 18px; color: var(--red); }
+    .hcard-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: .95rem; color: var(--text); }
+    .hcard-sub { font-size: .75rem; color: var(--text-3); margin-top: 2px; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .pill {
+      font-size: .72rem; font-weight: 600; letter-spacing: .04em;
+      padding: 4px 10px; border-radius: 100px;
+      background: var(--bg-2); border: 1px solid var(--border); color: var(--text-2);
+    }
+    /* floating badges */
+    .fbadge {
+      position: absolute; background: var(--card);
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: 10px 14px; box-shadow: var(--shadow-md);
+      display: flex; align-items: center; gap: 8px; z-index: 10;
+      white-space: nowrap;
+    }
+    .fbadge-dot { width: 8px; height: 8px; border-radius: 50%; background: #22C55E; flex-shrink: 0; }
+    .fbadge span { font-size: .78rem; font-weight: 600; color: var(--text); }
+
+    /* ───────── SECTION HEAD ───────── */
+    .sec-head { margin-bottom: 56px; }
+    .sec-head .label { margin-bottom: 14px; }
+    .sec-head h2 { margin-bottom: 14px; }
+    .sec-head p { max-width: 500px; }
+
+    /* ───────── SERVICES ───────── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .scard {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      transition: all .25s ease;
+      position: relative; overflow: hidden;
+    }
+    .scard::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--red-bg) 0%, transparent 55%);
+      opacity: 0; transition: opacity .3s;
+    }
+    .scard:hover { border-color: var(--red-border); box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .scard:hover::after { opacity: 1; }
+    .scard-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--red-bg); border: 1px solid var(--red-border);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px; position: relative; z-index: 1;
+    }
+    .scard-icon svg { width: 22px; height: 22px; color: var(--red); }
+    .scard h3 { margin-bottom: 8px; position: relative; z-index: 1; font-size: 1rem; }
+    .scard p { font-size: .85rem; color: var(--text-2); line-height: 1.65; margin-bottom: 18px; position: relative; z-index: 1; }
+    .scard .pill-row { position: relative; z-index: 1; }
+
+    /* ───────── TECH ───────── */
+    .tech-section { background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .tcard {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px;
+      transition: all .25s;
+    }
+    .tcard:hover { box-shadow: var(--shadow-lg); border-color: var(--border-2); }
+    .tcard-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+    .tcard-logo {
+      width: 52px; height: 52px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      font-family: monospace; font-weight: 900; font-size: 1.1rem;
+    }
+    .tcard-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--text); margin-bottom: 6px; }
+    .tcard-desc { font-size: .85rem; color: var(--text-2); line-height: 1.7; }
+    .tcard-metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+    .tmetric {
+      text-align: center; padding: 12px 8px; border-radius: 10px;
+      background: var(--bg-2); border: 1px solid var(--border);
+    }
+    .tmetric-val { font-family: 'Syne', sans-serif; font-weight: 700; font-size: .85rem; color: var(--text); }
+    .tmetric-lbl { font-size: .68rem; color: var(--text-3); margin-top: 3px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; }
+
+    /* ───────── CLIENTS ───────── */
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .ccard {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px 22px;
+      display: flex; align-items: center; gap: 14px;
+      transition: all .2s;
+    }
+    .ccard:hover {
+      border-color: var(--red-border);
+      background: var(--card-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .ccard-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--red-bg); border: 1px solid var(--red-border);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .ccard-icon svg { width: 18px; height: 18px; color: var(--red); }
+    .ccard-name { font-weight: 600; font-size: .88rem; color: var(--text); margin-bottom: 2px; }
+    .ccard-cat { font-size: .75rem; color: var(--text-3); }
+    .ccard-arrow { margin-left: auto; color: var(--text-3); flex-shrink: 0; transition: color .2s, transform .2s; }
+    .ccard:hover .ccard-arrow { color: var(--red); transform: translateX(2px); }
+
+    /* ───────── PROCESS ───────── */
+    .process-section { background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .process-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .pcard {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px;
+      transition: all .25s;
+    }
+    .pcard:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .pcard-num {
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: .72rem;
+      color: var(--red); letter-spacing: .12em; text-transform: uppercase;
+      background: var(--red-bg); border: 1px solid var(--red-border);
+      display: inline-block; padding: 3px 10px; border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .pcard h3 { font-size: .95rem; margin-bottom: 8px; }
+    .pcard p { font-size: .83rem; color: var(--text-2); line-height: 1.65; }
+
+    /* ───────── WHY US ───────── */
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+    .why-list { display: flex; flex-direction: column; gap: 16px; }
+    .why-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 20px;
+      transition: all .2s;
+    }
+    .why-item:hover { border-color: var(--red-border); box-shadow: var(--shadow-sm); }
+    .why-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--red-bg); border: 1px solid var(--red-border);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .why-icon svg { width: 16px; height: 16px; color: var(--red); }
+    .why-title { font-weight: 600; font-size: .9rem; color: var(--text); margin-bottom: 3px; }
+    .why-desc { font-size: .82rem; color: var(--text-2); line-height: 1.6; }
+    .why-visual {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: 20px; padding: 32px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .wv-head { font-family: 'Syne', sans-serif; font-weight: 700; font-size: .95rem; color: var(--text); margin-bottom: 4px; }
+    .wv-sub { font-size: .8rem; color: var(--text-3); }
+    .wv-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 14px; background: var(--card);
+      border: 1px solid var(--border); border-radius: 10px;
+    }
+    .wv-icon { width: 28px; height: 28px; border-radius: 6px; background: var(--red-bg); border: 1px solid var(--red-border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .wv-icon svg { width: 14px; height: 14px; color: var(--red); }
+    .wv-label { font-size: .82rem; font-weight: 500; color: var(--text-2); }
+    .wv-bar { flex: 1; height: 6px; border-radius: 100px; background: var(--bg-3); overflow: hidden; }
+    .wv-fill { height: 100%; border-radius: 100px; background: var(--red); }
+    .wv-pct { font-size: .75rem; font-weight: 700; color: var(--red); }
+
+    /* ───────── CONTACT ───────── */
+    .contact-section { background: var(--bg-2); border-top: 1px solid var(--border); }
+    .contact-wrap {
+      max-width: 760px; margin: 0 auto; text-align: center;
+    }
+    .wa-big-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 48px;
+      box-shadow: var(--shadow-md);
+      margin: 40px 0 24px;
+      position: relative; overflow: hidden;
+    }
+    .wa-big-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(34,197,94,.07) 0%, transparent 65%);
+    }
+    .wa-circle {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: #22C55E;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 22px;
+      box-shadow: 0 6px 24px rgba(34,197,94,.35);
+    }
+    .wa-circle svg { width: 36px; height: 36px; }
+    .wa-number {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 1.5rem; color: var(--text); margin-bottom: 6px;
+    }
+    .wa-caption { font-size: .9rem; color: var(--text-3); margin-bottom: 28px; }
+    .wa-topics {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      justify-content: center; margin: 28px 0;
+    }
+    .wa-topic {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: 100px; padding: 8px 16px;
+      font-size: .8rem; font-weight: 500; color: var(--text-2);
+      transition: all .2s; cursor: pointer;
+    }
+    .wa-topic svg { width: 14px; height: 14px; color: #22C55E; }
+    .wa-topic:hover { border-color: #22C55E; color: var(--text); background: rgba(34,197,94,.06); }
+    .contact-info-row {
+      display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+    }
+    .ci-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 100px; padding: 10px 18px;
+      font-size: .82rem; color: var(--text-2);
+    }
+    .ci-pill svg { width: 14px; height: 14px; color: var(--red); }
+
+    /* ───────── FOOTER ───────── */
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 40px 0 24px;
+    }
+    .footer-top {
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      align-items: flex-start; gap: 32px; margin-bottom: 36px;
+    }
+    .footer-brand { max-width: 280px; }
+    .footer-brand p { font-size: .83rem; color: var(--text-3); line-height: 1.65; margin-top: 12px; }
+    .footer-links h4 { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 14px; }
+    .footer-links a { display: block; font-size: .85rem; color: var(--text-2); padding: 4px 0; transition: color .2s; }
+    .footer-links a:hover { color: var(--red); }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 20px;
+      display: flex; flex-wrap: wrap; gap: 12px;
+      align-items: center; justify-content: space-between;
+    }
+    .footer-bottom span { font-size: .8rem; color: var(--text-3); }
+
+    /* ───────── TICKER ───────── */
+    .ticker-wrap {
+      overflow: hidden; background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .ticker-track { display: flex; width: max-content; animation: tick 30s linear infinite; }
+    .ticker-track:hover { animation-play-state: paused; }
+    @keyframes tick { to { transform: translateX(-50%); } }
+    .tick-item {
+      padding: 12px 36px;
+      font-size: .72rem; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--text-3); white-space: nowrap;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .tick-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--red); }
+
+    /* ───────── FLOATING WA ───────── */
+    .float-wa {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      width: 54px; height: 54px; border-radius: 50%;
+      background: #22C55E;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(34,197,94,.4);
+      transition: transform .2s, box-shadow .2s;
+      animation: wa-pulse 3s infinite;
+    }
+    .float-wa:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(34,197,94,.55); }
+    .float-wa svg { width: 27px; height: 27px; }
+    @keyframes wa-pulse {
+      0%,100% { box-shadow: 0 4px 20px rgba(34,197,94,.4); }
+      50%      { box-shadow: 0 4px 30px rgba(34,197,94,.65), 0 0 0 6px rgba(34,197,94,.08); }
+    }
+
+    /* ───────── SCROLL ANIM ───────── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ───────── RESPONSIVE ───────── */
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .process-grid  { grid-template-columns: 1fr 1fr; }
+      .why-grid      { grid-template-columns: 1fr; }
+      .tech-grid     { grid-template-columns: 1fr; }
+      .hero-two-col  { grid-template-columns: 1fr !important; }
+      .hero-visual   { display: none; }
+    }
+    @media (max-width: 640px) {
+      section { padding: 64px 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-grid  { grid-template-columns: 1fr; }
+      .nav-links, .nav-right .btn { display: none; }
+      .ham { display: flex; }
+      .hero-stats { width: 100%; }
+      .hero-stat { flex: 1; }
+      .tech-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ░░░ FLOATING WA ░░░ -->
+<a href="https://wa.me/919677797195?text=Hi%20JK%20National%20Solution%2C%20I%27d%20like%20to%20discuss%20a%20project!" target="_blank" class="float-wa" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ░░░ NAV ░░░ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">
+        <img src="https://jkns.co.in/img/logo.png" alt="Logo">
+      </div>
+      <div>
+        <div class="logo-text">JK National</div>
+        <div class="logo-sub">Solution</div>
+      </div>
+    </a>
+
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#tech">Technology</a>
+      <a href="#clients">Clients</a>
+      <a href="#process">Process</a>
+      <a href="#about">Why Us</a>
+    </div>
+
+    <div class="nav-right">
+      <!-- Theme toggle -->
+      <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+        <div class="theme-thumb"></div>
+        <span class="theme-icon sun">☀️</span>
+        <span class="theme-icon moon">🌙</span>
+      </button>
+      <a href="#contact" class="btn btn-red" style="padding:9px 18px;font-size:.82rem;">
+        <svg viewBox="0 0 24 24" fill="white" width="14" height="14"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Us
+      </a>
+      <!-- Ham -->
+      <div class="ham" id="ham" onclick="toggleMob()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+  <div class="mob-nav" id="mob-nav">
+    <a href="#services" onclick="closeMob()">Services</a>
+    <a href="#tech"     onclick="closeMob()">Technology</a>
+    <a href="#clients"  onclick="closeMob()">Clients</a>
+    <a href="#process"  onclick="closeMob()">Process</a>
+    <a href="#about"    onclick="closeMob()">Why Us</a>
+    <a href="#contact"  onclick="closeMob()">Contact</a>
+  </div>
+</nav>
+
+<!-- ░░░ HERO ░░░ -->
+<section class="hero dot-bg" style="padding-top:64px;">
+  <div class="container">
+    <!-- Two-column grid: text left, card right -->
+    <div class="hero-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;min-height:calc(100vh - 64px);padding:60px 0;">
+
+      <!-- LEFT: Text content -->
+      <div class="hero-content">
+        <div class="hero-badge reveal">
+          <div class="hero-badge-dot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <span>Based in Coimbatore, India · Since 2020</span>
+        </div>
+        <h1 class="h1 hero-title reveal">
+          We Build<br/><em>Digital Products</em><br/>That Matter.
+        </h1>
+        <p class="lead hero-desc reveal">
+          JK National Solution crafts professional web applications using Django and cross-platform mobile apps using Flutter — turning your ideas into reliable, scalable software.
+        </p>
+        <div class="hero-btns reveal">
+          <a href="#contact" class="btn btn-wa">
+            <svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Start on WhatsApp
+          </a>
+          <a href="#clients" class="btn btn-ghost">View Our Work</a>
+        </div>
+        <div class="hero-stats reveal">
+          <div class="hero-stat"><div class="hero-stat-num">7+</div><div class="hero-stat-lbl">Clients</div></div>
+          <div class="hero-stat"><div class="hero-stat-num">10+</div><div class="hero-stat-lbl">Projects</div></div>
+          <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-lbl">Satisfaction</div></div>
+          <div class="hero-stat"><div class="hero-stat-num">5yr</div><div class="hero-stat-lbl">Experience</div></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Card visual -->
+      <div class="hero-visual reveal">
+        <div class="hero-card-stack" style="padding:44px 16px 44px 16px;">
+          <div class="hcard-back2"></div>
+          <div class="hcard-back1"></div>
+          <div class="hcard hcard-main">
+            <div class="hcard-top">
+              <div class="hcard-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <div class="hcard-title">New Project Started</div>
+                <div class="hcard-sub">Customer Portal · Django + Flutter</div>
+              </div>
+            </div>
+            <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:14px;font-size:.8rem;color:var(--text-2);line-height:1.6;">
+              Requirements gathered ✓<br/>Wireframes approved ✓<br/>Development sprint #1 underway…
+            </div>
+            <div class="pill-row" style="margin-top:14px;">
+              <span class="pill">Django</span>
+              <span class="pill">Flutter</span>
+              <span class="pill">PostgreSQL</span>
+              <span class="pill">REST API</span>
+            </div>
+          </div>
+          <!-- floating badges -->
+          <div class="fbadge" style="bottom:-10px;left:0;">
+            <div class="fbadge-dot"></div>
+            <span>Available for new projects</span>
+          </div>
+          <div class="fbadge" style="top:10px;right:-8px;flex-direction:column;align-items:flex-start;gap:4px;">
+            <span style="font-size:.68rem;color:var(--text-3);font-weight:500;">Response time</span>
+            <span style="font-size:.9rem;font-weight:700;color:var(--text);">~5 minutes ⚡</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ TICKER ░░░ -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <div class="tick-item">Web Development<div class="tick-dot"></div></div>
+    <div class="tick-item">Mobile Applications<div class="tick-dot"></div></div>
+    <div class="tick-item">Django Framework<div class="tick-dot"></div></div>
+    <div class="tick-item">Flutter Development<div class="tick-dot"></div></div>
+    <div class="tick-item">Customer Portals<div class="tick-dot"></div></div>
+    <div class="tick-item">API Integration<div class="tick-dot"></div></div>
+    <div class="tick-item">UI / UX Design<div class="tick-dot"></div></div>
+    <div class="tick-item">Cloud Deployment<div class="tick-dot"></div></div>
+    <div class="tick-item">Web Development<div class="tick-dot"></div></div>
+    <div class="tick-item">Mobile Applications<div class="tick-dot"></div></div>
+    <div class="tick-item">Django Framework<div class="tick-dot"></div></div>
+    <div class="tick-item">Flutter Development<div class="tick-dot"></div></div>
+    <div class="tick-item">Customer Portals<div class="tick-dot"></div></div>
+    <div class="tick-item">API Integration<div class="tick-dot"></div></div>
+    <div class="tick-item">UI / UX Design<div class="tick-dot"></div></div>
+    <div class="tick-item">Cloud Deployment<div class="tick-dot"></div></div>
+  </div>
+</div>
+
+<!-- ░░░ SERVICES ░░░ -->
+<section id="services">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="label">What We Do</div>
+      <h2 class="h2" style="margin-top:14px;">Our Core <span class="red">Services</span></h2>
+      <p class="lead" style="margin-top:12px;">End-to-end digital solutions built with the right tools — from concept to production.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="scard reveal">
+        <div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+        <h3>Web Development</h3>
+        <p>Full-stack web applications powered by Django — secure, fast, and built to scale with your business from day one.</p>
+        <div class="pill-row"><span class="pill">Django</span><span class="pill">Python</span><span class="pill">PostgreSQL</span></div>
+      </div>
+
+      <div class="scard reveal">
+        <div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a1 1 0 001-1V4a1 1 0 00-1-1H8a1 1 0 00-1 1v16a1 1 0 001 1z"/></svg></div>
+        <h3>Mobile Applications</h3>
+        <p>Beautiful cross-platform apps using Flutter — one codebase, native performance on both iOS and Android.</p>
+        <div class="pill-row"><span class="pill">Flutter</span><span class="pill">Dart</span><span class="pill">iOS & Android</span></div>
+      </div>
+
+      <div class="scard reveal">
+        <div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+        <h3>Customer Portals</h3>
+        <p>Tailored portals with secure login, rich dashboards, and self-service tools that delight your end-users.</p>
+        <div class="pill-row"><span class="pill">Auth Systems</span><span class="pill">Dashboards</span></div>
+      </div>
+
+      <div class="scard reveal">
+        <div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+        <h3>API Development</h3>
+        <p>Robust RESTful APIs that seamlessly connect your web, mobile, and third-party integrations.</p>
+        <div class="pill-row"><span class="pill">REST API</span><span class="pill">DRF</span><span class="pill">Integrations</span></div>
+      </div>
+
+      <div class="scard reveal">
+        <div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg></div>
+        <h3>UI / UX Design</h3>
+        <p>Clean, intuitive interfaces that engage users from first click — every screen designed with purpose.</p>
+        <div class="pill-row"><span class="pill">Wireframing</span><span class="pill">Prototyping</span></div>
+      </div>
+
+      <div class="scard reveal">
+        <div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"/></svg></div>
+        <h3>Maintenance & Support</h3>
+        <p>Ongoing monitoring, updates, and technical support to keep your applications running at peak performance.</p>
+        <div class="pill-row"><span class="pill">24/7 Support</span><span class="pill">Updates</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ TECH ░░░ -->
+<section id="tech" class="tech-section">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="label">Tech Stack</div>
+      <h2 class="h2" style="margin-top:14px;">Built with <span class="red">Battle-Tested</span> Tools</h2>
+      <p class="lead" style="margin-top:12px;">Proven technologies chosen for reliability, scalability, and developer experience.</p>
+    </div>
+    <div class="tech-grid reveal">
+
+      <div class="tcard">
+        <div class="tcard-head">
+          <div class="tcard-logo" style="background:rgba(9,120,76,.1);border:1px solid rgba(9,120,76,.2);color:#09784c;">DJ</div>
+          <div>
+            <div class="tcard-title">Django</div>
+            <div class="tcard-desc">Python's most powerful web framework. Batteries-included for rapid, secure development — ORM, admin panel, and REST capabilities out of the box.</div>
+          </div>
+        </div>
+        <div class="tcard-metrics">
+          <div class="tmetric"><div class="tmetric-val">MVC</div><div class="tmetric-lbl">Architecture</div></div>
+          <div class="tmetric"><div class="tmetric-val">ORM</div><div class="tmetric-lbl">Database</div></div>
+          <div class="tmetric"><div class="tmetric-val">REST</div><div class="tmetric-lbl">API Ready</div></div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-head">
+          <div class="tcard-logo" style="background:rgba(2,115,255,.08);border:1px solid rgba(2,115,255,.18);">
+            <svg viewBox="0 0 24 24" width="28" height="28"><path d="M14.314 0L2.3 12 6 15.7 21.684 0h-7.37zm.159 11.99l-3.282 3.283 3.28 3.285L21.684 12l-7.211-.01z" fill="#027DFF"/><path d="M11.191 15.273l-3.28 3.286 3.28 3.282h7.21l-3.928-3.282 3.929-3.286h-7.21z" fill="#027DFF" opacity=".5"/></svg>
+          </div>
+          <div>
+            <div class="tcard-title">Flutter</div>
+            <div class="tcard-desc">Google's UI toolkit for building natively compiled apps for mobile, web, and desktop from a single Dart codebase — with pixel-perfect design.</div>
+          </div>
+        </div>
+        <div class="tcard-metrics">
+          <div class="tmetric"><div class="tmetric-val">iOS</div><div class="tmetric-lbl">Native</div></div>
+          <div class="tmetric"><div class="tmetric-val">Android</div><div class="tmetric-lbl">Native</div></div>
+          <div class="tmetric"><div class="tmetric-val">1× Code</div><div class="tmetric-lbl">Efficiency</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ CLIENTS ░░░ -->
+<section id="clients">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="label">Our Work</div>
+      <h2 class="h2" style="margin-top:14px;">Trusted by <span class="red">Real Businesses</span></h2>
+      <p class="lead" style="margin-top:12px;">Production-grade apps delivered across healthcare, education, finance, manufacturing, and more.</p>
+    </div>
+    <div class="clients-grid reveal">
+
+      <a href="https://qqhscbe.com/" target="_blank" class="ccard">
+        <div class="ccard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <div><div class="ccard-name">Qutbi Qardan Hasana</div><div class="ccard-cat">Finance Portal · Coimbatore</div></div>
+        <svg class="ccard-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+
+      <a href="https://www.bemcbe.in/" target="_blank" class="ccard">
+        <div class="ccard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div>
+        <div><div class="ccard-name">BEM Coimbatore</div><div class="ccard-cat">Business Portal</div></div>
+        <svg class="ccard-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+
+      <a href="https://myguruacademy.net/" target="_blank" class="ccard">
+        <div class="ccard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg></div>
+        <div><div class="ccard-name">My Guru Academy</div><div class="ccard-cat">Education Platform</div></div>
+        <svg class="ccard-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+
+      <a href="https://touchstonehealthcaremc.com/" target="_blank" class="ccard">
+        <div class="ccard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+        <div><div class="ccard-name">Touchstone Healthcare</div><div class="ccard-cat">Healthcare Portal</div></div>
+        <svg class="ccard-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+
+      <a href="https://orcabathtubs.com/" target="_blank" class="ccard">
+        <div class="ccard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></div>
+        <div><div class="ccard-name">Orca Bath Tubs</div><div class="ccard-cat">E-Commerce</div></div>
+        <svg class="ccard-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+
+      <a href="https://aebcbe.com/" target="_blank" class="ccard">
+        <div class="ccard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+        <div><div class="ccard-name">AEB Coimbatore</div><div class="ccard-cat">Industrial Web App</div></div>
+        <svg class="ccard-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+
+      <a href="https://fmbcoimbatore.co.in/" target="_blank" class="ccard">
+        <div class="ccard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg></div>
+        <div><div class="ccard-name">FMB Coimbatore</div><div class="ccard-cat">Business Website</div></div>
+        <svg class="ccard-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ PROCESS ░░░ -->
+<section id="process" class="process-section">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="label">How We Work</div>
+      <h2 class="h2" style="margin-top:14px;">Our <span class="red">6-Step Process</span></h2>
+      <p class="lead" style="margin-top:12px;">Structured, transparent delivery — you always know exactly where your project stands.</p>
+    </div>
+    <div class="process-grid reveal">
+      <div class="pcard"><div class="pcard-num">Step 01</div><h3>Discovery</h3><p>We understand your business goals, target users, and technical requirements before anything else.</p></div>
+      <div class="pcard"><div class="pcard-num">Step 02</div><h3>Design & Prototype</h3><p>Wireframes and clickable prototypes so you see and feel the product before development begins.</p></div>
+      <div class="pcard"><div class="pcard-num">Step 03</div><h3>Agile Development</h3><p>Short sprints with weekly demos — full visibility into progress with feedback at every stage.</p></div>
+      <div class="pcard"><div class="pcard-num">Step 04</div><h3>Testing & QA</h3><p>Rigorous cross-device testing ensures a flawless experience before your product reaches users.</p></div>
+      <div class="pcard"><div class="pcard-num">Step 05</div><h3>Deployment & Launch</h3><p>We handle servers, domains, and configuration — smooth zero-downtime production launch.</p></div>
+      <div class="pcard"><div class="pcard-num">Step 06</div><h3>Ongoing Support</h3><p>Post-launch we're your long-term partner — monitoring, updating, and scaling with your growth.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ WHY US ░░░ -->
+<section id="about">
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <div class="sec-head reveal" style="margin-bottom:32px;">
+          <div class="label">Why JK National</div>
+          <h2 class="h2" style="margin-top:14px;">Why Businesses <span class="red">Choose Us</span></h2>
+          <p class="lead" style="margin-top:12px;">We're not just a development shop — we're a committed team that takes ownership of your product's success.</p>
+        </div>
+        <div class="why-list reveal">
+          <div class="why-item">
+            <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+            <div><div class="why-title">Fast Delivery</div><div class="why-desc">We move quickly without cutting corners — typical projects launch in 4–8 weeks.</div></div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+            <div><div class="why-title">Quality First</div><div class="why-desc">Every line of code is reviewed. We build for maintainability, security, and long-term scale.</div></div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></div>
+            <div><div class="why-title">Direct Communication</div><div class="why-desc">No middlemen. You talk directly to the developers — on WhatsApp, any time.</div></div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+            <div><div class="why-title">Customer-Focused</div><div class="why-desc">We specialize in customer-facing apps — your users' experience is our top priority.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-visual reveal">
+        <div>
+          <div class="wv-head">Client Satisfaction Metrics</div>
+          <div class="wv-sub">Based on delivered projects</div>
+        </div>
+        <div class="wv-row">
+          <div class="wv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+          <div class="wv-label">Web Apps</div>
+          <div class="wv-bar"><div class="wv-fill" style="width:90%"></div></div>
+          <div class="wv-pct">90%</div>
+        </div>
+        <div class="wv-row">
+          <div class="wv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a1 1 0 001-1V4a1 1 0 00-1-1H8a1 1 0 00-1 1v16a1 1 0 001 1z"/></svg></div>
+          <div class="wv-label">Mobile Apps</div>
+          <div class="wv-bar"><div class="wv-fill" style="width:75%"></div></div>
+          <div class="wv-pct">75%</div>
+        </div>
+        <div class="wv-row">
+          <div class="wv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+          <div class="wv-label">Customer Portals</div>
+          <div class="wv-bar"><div class="wv-fill" style="width:85%"></div></div>
+          <div class="wv-pct">85%</div>
+        </div>
+        <div class="wv-row">
+          <div class="wv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg></div>
+          <div class="wv-label">Client Retention</div>
+          <div class="wv-bar"><div class="wv-fill" style="width:100%"></div></div>
+          <div class="wv-pct">100%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ CONTACT ░░░ -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="reveal">
+        <div class="label">Contact Us</div>
+        <h2 class="h2" style="margin-top:14px;">Let's Build <span class="red">Something Great</span></h2>
+        <p class="lead" style="margin-top:12px;margin-left:auto;margin-right:auto;">Reach out directly on WhatsApp — we respond fast and love talking about your next project.</p>
+      </div>
+
+      <div class="wa-big-card reveal">
+        <div class="wa-circle">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div class="wa-caption">WhatsApp · Typically replies in minutes</div>
+
+        <div class="wa-topics">
+          <a href="https://wa.me/919677797195?text=Hi!%20I%20need%20a%20website%20built." target="_blank" class="wa-topic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Web App
+          </a>
+          <a href="https://wa.me/919677797195?text=Hi!%20I%20need%20a%20mobile%20app." target="_blank" class="wa-topic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a1 1 0 001-1V4a1 1 0 00-1-1H8a1 1 0 00-1 1v16a1 1 0 001 1z"/></svg>
+            Mobile App
+          </a>
+          <a href="https://wa.me/919677797195?text=Hi!%20I%20need%20a%20customer%20portal." target="_blank" class="wa-topic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            Customer Portal
+          </a>
+          <a href="https://wa.me/919677797195?text=Hi!%20I%20need%20a%20project%20quote." target="_blank" class="wa-topic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            Get a Quote
+          </a>
+          <a href="https://wa.me/919677797195?text=Hi!%20I%20need%20support%20for%20my%20project." target="_blank" class="wa-topic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            Support
+          </a>
+        </div>
+
+        <a href="https://wa.me/919677797195?text=Hi%20JK%20National%20Solution%2C%20I%27d%20like%20to%20discuss%20a%20project!" target="_blank" class="btn btn-wa" style="font-size:1rem;padding:15px 40px;border-radius:50px;">
+          <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Open WhatsApp Chat
+        </a>
+      </div>
+
+      <div class="contact-info-row reveal">
+        <div class="ci-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Coimbatore, Tamil Nadu</div>
+        <div class="ci-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Mon–Sat, 9am–6pm IST</div>
+        <div class="ci-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>~5 min reply time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ FOOTER ░░░ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark" style="width:32px;height:32px;border-radius:7px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+          </div>
+          <div>
+            <div class="logo-text" style="font-size:.88rem;">JK National Solution</div>
+          </div>
+        </div>
+        <p>Professional web & mobile development from Coimbatore. We build customer-facing applications using Django and Flutter.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <a href="#services">Web Development</a>
+        <a href="#services">Mobile Apps</a>
+        <a href="#services">Customer Portals</a>
+        <a href="#services">API Development</a>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <a href="#clients">Our Clients</a>
+        <a href="#process">Our Process</a>
+        <a href="#about">Why Us</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <a href="https://wa.me/919677797195" target="_blank">WhatsApp</a>
+        <a href="#">Coimbatore, India</a>
+        <a href="mailto:jk@jkns.co.in">jk@jkns.co.in</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script> JK National Solution. All rights reserved.</span>
+      <span>Made with ❤️ in Coimbatore</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* THEME */
+  function toggleTheme() {
+    const html = document.documentElement;
+    const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('jkns-theme', next);
+  }
+  (function() {
+    const saved = localStorage.getItem('jkns-theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  })();
+
+  /* MOBILE NAV */
+  let mobOpen = false;
+  function toggleMob() {
+    mobOpen = !mobOpen;
+    document.getElementById('mob-nav').classList.toggle('open', mobOpen);
+  }
+  function closeMob() {
+    mobOpen = false;
+    document.getElementById('mob-nav').classList.remove('open');
+  }
+
+  /* SCROLL REVEAL */
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+</script>
+</body>
+</html>
